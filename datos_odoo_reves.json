@@ -1,0 +1,419 @@
+{
+    "account.tax.group": [
+        {
+            "id": 2,
+            "name": "VAT 21%",
+            "l10n_ar_vat_afip_code": "5"
+        },
+        {
+            "id": 3,
+            "name": "VAT 27%",
+            "l10n_ar_vat_afip_code": "6"
+        },
+        {
+            "id": 4,
+            "name": "VAT 10.5%",
+            "l10n_ar_vat_afip_code": "4"
+        },
+        {
+            "id": 5,
+            "name": "VAT 2.5%",
+            "l10n_ar_vat_afip_code": "9"
+        },
+        {
+            "id": 6,
+            "name": "VAT Not Applicable",
+            "l10n_ar_vat_afip_code": "0"
+        },
+        {
+            "id": 7,
+            "name": "VAT Untaxed",
+            "l10n_ar_vat_afip_code": "1"
+        },
+        {
+            "id": 8,
+            "name": "VAT Exempt",
+            "l10n_ar_vat_afip_code": "2"
+        },
+        {
+            "id": 9,
+            "name": "VAT 0%",
+            "l10n_ar_vat_afip_code": "3"
+        },
+        {
+            "id": 10,
+            "name": "VAT 5%",
+            "l10n_ar_vat_afip_code": "8"
+        },
+        {
+            "id": 13,
+            "name": "VAT Perception",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 14,
+            "name": "Perc IIBB CABA",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 15,
+            "name": "Perc IIBB ARBA",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 16,
+            "name": "Perc IIBB Catamarca",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 17,
+            "name": "Perc IIBB C\u00f3rdoba",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 18,
+            "name": "Perc IIBB Corrientes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 19,
+            "name": "Perc IIBB Entre R\u00edos",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 20,
+            "name": "Perc IIBB Jujuy",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 21,
+            "name": "Perc IIBB Mendoza",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 22,
+            "name": "Perc IIBB La Rioja",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 23,
+            "name": "Perc IIBB Salta",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 24,
+            "name": "Perc IIBB San Juan",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 25,
+            "name": "Perc IIBB San Luis",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 26,
+            "name": "Perc IIBB Santa Fe",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 27,
+            "name": "Perc IIBB Santiago del Estero",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 28,
+            "name": "Perc IIBB Tucum\u00e1n",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 29,
+            "name": "Perc IIBB Chaco",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 30,
+            "name": "Perc IIBB Chubut",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 31,
+            "name": "Perc IIBB Formosa",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 32,
+            "name": "Perc IIBB Misiones",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 33,
+            "name": "Perc IIBB Neuqu\u00e9n",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 34,
+            "name": "Perc IIBB La Pampa",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 35,
+            "name": "Perc IIBB R\u00edo Negro",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 36,
+            "name": "Perc IIBB Santa Cruz",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 37,
+            "name": "Perc IIBB Tierra del Fuego",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 39,
+            "name": "Municipal Taxes Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 40,
+            "name": "Profit Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 41,
+            "name": "Other Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 42,
+            "name": "VAT Withholding",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 43,
+            "name": "VAT 21%",
+            "l10n_ar_vat_afip_code": "5"
+        },
+        {
+            "id": 44,
+            "name": "VAT 27%",
+            "l10n_ar_vat_afip_code": "6"
+        },
+        {
+            "id": 45,
+            "name": "VAT 10.5%",
+            "l10n_ar_vat_afip_code": "4"
+        },
+        {
+            "id": 46,
+            "name": "VAT 2.5%",
+            "l10n_ar_vat_afip_code": "9"
+        },
+        {
+            "id": 47,
+            "name": "VAT Not Applicable",
+            "l10n_ar_vat_afip_code": "0"
+        },
+        {
+            "id": 48,
+            "name": "VAT Untaxed",
+            "l10n_ar_vat_afip_code": "1"
+        },
+        {
+            "id": 49,
+            "name": "VAT Exempt",
+            "l10n_ar_vat_afip_code": "2"
+        },
+        {
+            "id": 50,
+            "name": "VAT 0%",
+            "l10n_ar_vat_afip_code": "3"
+        },
+        {
+            "id": 51,
+            "name": "VAT 5%",
+            "l10n_ar_vat_afip_code": "8"
+        },
+        {
+            "id": 54,
+            "name": "VAT Perception",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 55,
+            "name": "Perc IIBB CABA",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 56,
+            "name": "Perc IIBB ARBA",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 57,
+            "name": "Perc IIBB Catamarca",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 58,
+            "name": "Perc IIBB C\u00f3rdoba",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 59,
+            "name": "Perc IIBB Corrientes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 60,
+            "name": "Perc IIBB Entre R\u00edos",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 61,
+            "name": "Perc IIBB Jujuy",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 62,
+            "name": "Perc IIBB Mendoza",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 63,
+            "name": "Perc IIBB La Rioja",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 64,
+            "name": "Perc IIBB Salta",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 65,
+            "name": "Perc IIBB San Juan",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 66,
+            "name": "Perc IIBB San Luis",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 67,
+            "name": "Perc IIBB Santa Fe",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 68,
+            "name": "Perc IIBB Santiago del Estero",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 69,
+            "name": "Perc IIBB Tucum\u00e1n",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 70,
+            "name": "Perc IIBB Chaco",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 71,
+            "name": "Perc IIBB Chubut",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 72,
+            "name": "Perc IIBB Formosa",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 73,
+            "name": "Perc IIBB Misiones",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 74,
+            "name": "Perc IIBB Neuqu\u00e9n",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 75,
+            "name": "Perc IIBB La Pampa",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 76,
+            "name": "Perc IIBB R\u00edo Negro",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 77,
+            "name": "Perc IIBB Santa Cruz",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 78,
+            "name": "Perc IIBB Tierra del Fuego",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 80,
+            "name": "Municipal Taxes Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 81,
+            "name": "Profit Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 82,
+            "name": "Other Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 83,
+            "name": "Ret Ganancias S",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 84,
+            "name": "Ret Ganancias A",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 12,
+            "name": "Internal Taxes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 53,
+            "name": "Internal Taxes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 11,
+            "name": "Other Taxes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 52,
+            "name": "Other Taxes",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 38,
+            "name": "IIBB Perceptions",
+            "l10n_ar_vat_afip_code": false
+        },
+        {
+            "id": 79,
+            "name": "IIBB Perceptions",
+            "l10n_ar_vat_afip_code": false
+        }
+    ]
+}

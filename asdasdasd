@@ -1,0 +1,4 @@
+<field name="is_locked" invisible="1"/>
+<field name="show_mark_as_todo" invisible="1"/>
+<field name="show_check_availability" invisible="1"/>
+<field name="show_validate" invisible="1"/>

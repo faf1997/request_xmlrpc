@@ -1,0 +1,9 @@
+{
+    "res.company": [
+        {
+            "id": 1,
+            "name": "Food Novelty S.A.",
+            "ignore_journal_checkbook_sequence": true
+        }
+    ]
+}

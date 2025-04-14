@@ -1,0 +1,72 @@
+copiar datos con xml-rpc
+
+desistalar l10n_ar_stock_delivery
+
+desinstalar reports_aeroo(reparar porque no funciona)
+
+desinstalar product_expiry_ux(depende reports_aeroo)
+
+#desinstalar account_check_checkbook
+
+desinstalar hito_exportacion_impuestos
+
+desinstalar nt_banks
+
+#reemplazar aeroo_reports por el de ntsystemwork
+
+reemplazar el account_check_checkbook por el de ntsystemwork
+
+
+
+eliminar las referencias de aeroo de aplicaciones
+
+eliminar la referencia de account_check_checkbook de a2systems en aplicaciones
+
+actualizar la lista de aplicaciones
+
+
+instalar los módulos desinstalados anteriormente
+
+configurar el banco manualmente con los datos de las imagenes(es uno solo)
+
+restaurar los datos con xmlrpc
+
+revisar que datos no se pueden subir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+desinstalar hito_exportacion_impuestos
+
+desinstalar product_expiry_ux(depende reports_aeroo)
+
+git:
+    eliminar reports_aeroo(reparar porque no funciona)
+
+    reemplazar account_check_checkbook
+
+eliminar las referencias de aeroo en las aplicaciones
+
+desinstalar nt_banks volver a instalar
+
+
+cargar datos de la imagenes de la cuenta
+
+
+
+
+
+
+

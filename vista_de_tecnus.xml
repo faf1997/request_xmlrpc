@@ -1,0 +1,239 @@
+<data>
+  <xpath expr="/form[1]/sheet[1]/notebook[1]/page[2]/field[1]" position="inside">
+    <form string="Register Payment">
+                    <header>
+                    <button name="print_checks" class="oe_highlight" attrs="{'invisible': ['|', '|', ('payment_method_code', '!=', 'check_printing'), ('state', '!=', 'posted'), ('is_move_sent', '=', True)]}" string="Print Check" type="object" data-hotkey="g"/>
+                    <button name="action_unmark_sent" attrs="{'invisible': ['|', ('payment_method_code', '!=', 'check_printing'), ('is_move_sent', '=', False)]}" string="Unmark Sent" type="object" data-hotkey="l"/>
+                    <button name="action_void_check" attrs="{'invisible': ['|', '|', ('payment_method_code', '!=', 'check_printing'), ('state', '!=', 'posted'), ('is_move_sent', '=', False)]}" string="Void Check" type="object" data-hotkey="o"/>
+                        <button name="action_post" string="Confirm" type="object" class="oe_highlight" attrs="{'invisible': [('payment_method_code', '=', 'check_printing')]}" data-hotkey="v" groups="base.group_no_one" confirm="IMPORTANTE: La validación de la línea de pago se debe hacer desde el recibo. La validación manual de una línea de pago se usa solo para correcciones y usos avanzados. Seguro desea continuar?"/>
+                    <field name="check_add_debit_button" invisible="1"/>
+                    <button name="652" string="Debit check" type="action" attrs="{'invisible': ['|', '|', '|', '|',('payment_method_code', '!=', 'check_printing'), ('state', '!=', 'posted'), ('is_move_sent', '=', False), ('is_matched', '=', True), ('check_add_debit_button', '=', False)]}"/>
+                        <button name="action_draft" string="Reset To Draft" type="object" class="btn btn-secondary" attrs="{'invisible': [('state', 'not in', ('posted', 'cancel'))]}" groups="base.group_no_one" data-hotkey="w" confirm="IMPORTANTE: La validación de la línea de pago se debe hacer desde el recibo. La cancelación manual de una línea de pago se usa solo para correcciones y usos avanzados. Seguro desea continuar?"/>
+                <field name="amount_available_for_refund" invisible="1"/>
+                <button name="action_refund_wizard" type="object" string="Refund" groups="account.group_account_invoice" attrs="{'invisible': [('amount_available_for_refund', '&lt;=', 0)]}" class="btn-secondary"/>
+                        <button name="action_cancel" string="Cancel" type="object" attrs="{'invisible': [('state', '!=', 'draft')]}" data-hotkey="z" groups="base.group_no_one" confirm="IMPORTANTE: La validación de la línea de pago se debe hacer desde el recibo. La cancelación manual de una línea de pago se usa solo para correcciones y usos avanzados. Seguro desea continuar?"/>
+                        <button name="mark_as_sent" string="Mark as Sent" type="object" data-hotkey="q" attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('is_move_sent', '=', True), ('payment_method_code', '!=', 'manual')]}"/>
+                        <button name="unmark_as_sent" string="Unmark as Sent" type="object" data-hotkey="k" attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('is_move_sent', '=', False), ('payment_method_code', '!=', 'manual')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                    </header>
+					<div class="alert alert-info mb-0 text-center" role="alert" attrs="{'invisible': ['|', ('payment_method_code', '=', 'manual'), ('state', '=', 'posted')]}">
+						Assigned check number may vary after you <strong>post</strong> the payment.
+					</div>22
+                    <field name="edi_blocking_level" invisible="1"/>
+                    <field name="edi_error_count" invisible="1"/>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('edi_web_services_to_process', 'in', ['', False]), ('state', '=', 'draft')]}">
+                         <div>The payment will be processed asynchronously by the following E-invoicing service :
+                            <field name="edi_web_services_to_process" class="oe_inline"/>
+                         </div>
+                         <button name="action_process_edi_web_services" type="object" class="oe_link" string="Process now"/>
+                    </div>
+                    <div class="alert alert-danger" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('edi_error_count', '=', 0), ('edi_blocking_level', '!=', 'error')]}">
+                        <div class="o_row">
+                            <field name="edi_error_message"/>
+                            <button name="361" string="⇒ See errors" type="action" class="oe_link" attrs="{'invisible': [('edi_error_count', '=', 1)]}"/> 
+                            <button name="action_retry_edi_documents_error" type="object" class="oe_link oe_inline" string="Retry"/>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('edi_error_count', '=', 0), ('edi_blocking_level', '!=', 'warning')]}">
+                        <div class="o_row">
+                            <field name="edi_error_message"/>
+                            <button name="361" string="⇒ See errors" type="action" class="oe_link" attrs="{'invisible': [('edi_error_count', '=', 1)]}"/> 
+                        </div>
+                    </div>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" attrs="{'invisible': ['|', ('edi_error_count', '=', 0), ('edi_blocking_level', '!=', 'info')]}">
+                        <div class="o_row">
+                            <field name="edi_error_message"/>
+                            <button name="361" string="⇒ See errors" type="action" class="oe_link" attrs="{'invisible': [('edi_error_count', '=', 1)]}"/> 
+                        </div>
+                    </div>
+                    <div class="alert alert-info text-center" role="alert" attrs="{'invisible': ['|','|',('paired_internal_transfer_payment_id','!=',False),('is_internal_transfer','=',False),('state','!=','draft')]}">
+                        A second payment will be created automatically in the destination journal.
+                    </div>
+                    <div class="alert alert-warning text-center" role="alert" attrs="{                             'invisible': ['|', '|', ('is_internal_transfer','=',False), ('require_partner_bank_account', '=', False), ('partner_bank_id', '!=', False)]}">
+                        The selected payment method requires a bank account but none is set on
+                        <button class="oe_link alert-link" type="object" name="action_open_destination_journal" style="padding: 0; vertical-align: baseline;">the destination journal</button>.
+                    </div>
+                <div class="alert alert-danger mb-0" role="alert" attrs="{'invisible': [('l10n_latam_check_warning_msg', '=', False)]}">
+                    <field name="l10n_latam_check_warning_msg" nolabel="1"/>
+                </div>
+                    <sheet>
+                        <!-- Invisible fields -->
+                        <field name="id" invisible="1"/>
+                        <field name="is_move_sent" invisible="1"/>
+                        <field name="is_reconciled" invisible="1"/>
+                        <field name="is_matched" invisible="1"/>
+                        <field name="payment_method_code" invisible="1"/>
+                        <field name="show_partner_bank_account" invisible="1"/>
+                        <field name="require_partner_bank_account" invisible="1"/>
+                        <field name="available_payment_method_line_ids" invisible="1"/>
+                        <field name="available_partner_bank_ids" invisible="1"/>
+                        <field name="suitable_journal_ids" invisible="1"/>
+                        <field name="country_code" invisible="1"/>
+                        <field name="partner_type" invisible="1"/>
+                        <field name="posted_before" invisible="1"/>
+                        <field name="reconciled_invoices_type" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="paired_internal_transfer_payment_id" invisible="1"/>
+                        <field name="available_journal_ids" invisible="1"/>
+
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Invoice stat button -->
+                <button name="button_open_invoices" type="object" class="oe_stat_button" icon="fa-bars" attrs="{'invisible': [('reconciled_invoices_count','=', 0)]}">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_invoices_count"/>
+                                        <span attrs="{'invisible': [('reconciled_invoices_type', '!=', 'invoice')]}"> Invoice</span>
+                                        <span attrs="{'invisible': [('reconciled_invoices_type', '=', 'invoice')]}"> Credit Note</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Bill stat button -->
+                            <button name="button_open_bills" type="object" class="oe_stat_button" icon="fa-bars" attrs="{'invisible': [('reconciled_bills_count','=', 0)]}">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_bills_count"/>
+                                        <span> Bill</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Statement stat button -->
+                            <button name="button_open_statement_lines" type="object" class="oe_stat_button" icon="fa-bars" attrs="{'invisible': [('reconciled_statement_lines_count','=', 0)]}">
+                                <div class="o_form_field o_stat_info">
+                                    <field name="reconciled_statement_lines_count"/>
+                                    <span> Transaction</span>
+                                </div>
+                            </button>
+
+                            <!-- Journal Entry  button -->
+                            <button name="button_open_journal_entry" type="object" class="oe_stat_button" icon="fa-bars" groups="account.group_account_manager">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Journal Entry</span>
+                                </div>
+                            </button>
+                <button name="action_open_manual_reconciliation_widget" type="object" string="Payment Matching" class="oe_stat_button" icon="fa-dollar" groups="account.group_account_user" attrs="{'invisible': ['|', ('is_reconciled', '=', True), ('state', '!=', 'posted')]}"/>
+                <button name="action_view_refunds" type="object" class="oe_stat_button" icon="fa-money" attrs="{'invisible': [('refunds_count', '=', 0)]}">
+                    <field name="refunds_count" widget="statinfo" string="Refunds"/>
+                </button>
+                        </div>
+
+                        <widget name="web_ribbon" text="Invoicing App Legacy" bg_color="bg-info" attrs="{'invisible': [('state', '!=', 'invoicing_legacy')]}" tooltip="This payment has been generated through the Invoicing app, before installing Accounting. It has been disabled by the 'Invoicing Switch Threshold Date' setting so that it does not impact your accounting."/>
+
+                        <div class="oe_title">
+                            <h1 attrs="{'invisible': [('state', '!=', 'draft')]}"><span>Draft</span></h1>
+                            <h1 attrs="{'invisible': [('state', '=', 'draft')]}">
+                    <widget name="web_ribbon" title="Sent" attrs="{'invisible': [('is_move_sent', '!=', True)]}"/><field name="name" readonly="1"/></h1>
+                        </div>
+
+                        <group>
+                            <group name="group1">
+                                <field name="is_internal_transfer" attrs="{'readonly': [('state', '!=', 'draft')]}" invisible="1"/>
+                                <field name="payment_type" widget="radio" options="{'horizontal': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Customer" options="{'no_quick_create': True}" attrs="{'readonly':[('state', '!=', 'draft')],                                              'invisible':['|', ('partner_type','!=','customer'), ('is_internal_transfer', '=', True)]}" invisible="1"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Vendor" options="{'no_quick_create': True}" attrs="{'readonly':[('state', '!=', 'draft')],                                                'invisible':['|', ('partner_type','!=','supplier'), ('is_internal_transfer', '=', True)]}" invisible="1"/>
+                                <label for="amount"/>
+                                <div name="amount_div" class="o_row">
+                                    <field name="amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}" groups="base.group_multi_currency"/>
+                                </div>
+                <field name="company_currency_id" invisible="1"/>
+                <field name="other_currency" invisible="1"/>
+                <field name="force_amount_company_currency" invisible="1"/>
+                <label for="amount_company_currency" string="(on company currency)" attrs="{'invisible': [('other_currency', '=', False)]}"/>
+                <div name="amount_company_currency" class="o_row" attrs="{'invisible': [('other_currency', '=', False)]}">
+                    <field name="exchange_rate"/> = <field name="amount_company_currency" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </div>
+                    <field name="check_amount_in_words" attrs="{'invisible': [('payment_method_code', '!=', 'check_printing')]}" groups="base.group_no_one"/>
+                                <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="ref" string="Memo"/>
+                            </group>
+                            <group name="group2">
+                                <field name="journal_id" domain="[('id', 'in', available_journal_ids)]" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="edi_state" attrs="{'invisible': ['|', ('edi_state', '=', False), ('state', '=', 'draft')]}"/>
+                                <field name="payment_method_line_id" required="1" options="{'no_create': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="category_check" string="Cat." attrs="{                         'invisible': [('display_checkbook_type','=',False)],                         'readonly': [('payment_method_code', '=', 'check_printing')],                         'required': [('payment_method_code', '=', 'new_third_party_checks')]                         }"/>
+					<field name="checkbook_id" options="{'no_create': True, 'no_create_edit':True}" attrs="{'invisible': [('payment_method_code', '!=', 'check_printing')]}" domain="[('journal_id','=',journal_id),('state','=','active')]"/>
+					<field name="display_checkbook_type" invisible="1"/>
+					<field name="checkbook_type" attrs="{&#10;                        'invisible': [('display_checkbook_type','=',False)],&#10;                        'readonly': [('payment_method_code', '=', 'check_printing')],&#10;                        'required': [('payment_method_code', '=', 'new_third_party_checks')]&#10;                    }"/>
+					<field name="endosable" attrs="{'invisible': [('display_checkbook_type','=',False)]}"/>
+                <field name="l10n_latam_manual_checks" invisible="1"/>
+                <field name="l10n_latam_check_number" string="Check Number" attrs="{                         'invisible': [('payment_method_code', '!=', 'new_third_party_checks'), '|', ('payment_method_code', '!=', 'check_printing'), ('l10n_latam_manual_checks', '=', False)],                         'required': ['|', ('payment_method_code', '=', 'new_third_party_checks'), '&amp;', ('payment_method_code', '=', 'check_printing'), ('l10n_latam_manual_checks', '=', True)],                         'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="check_issue_date" string="Fecha de emisión" attrs="{                         'invisible': ['|',('display_checkbook_type','=',False), ('category_check', '!=', 'deferred')],                         'required': [('category_check', '=', 'deferred')]                         }"/>
+                        <!--'readonly': [('payment_method_code', '=', 'new_third_party_checks')],-->
+                <field name="l10n_latam_check_payment_date" attrs="{&#10;                        'required': [('payment_method_code', '=', 'new_third_party_checks')],&#10;                        'invisible': [('payment_method_code', '!=', 'new_third_party_checks')]&#10;                    }" string="Fecha de pago"/>
+                <field name="l10n_latam_check_bank_id" string="Check Bank" attrs="{&#10;                        'required': [('payment_method_code', '=', 'new_third_party_checks')],&#10;                        'invisible': [('payment_method_code', '!=', 'new_third_party_checks')]&#10;                    }"/>
+                <field name="l10n_latam_check_issuer_vat" string="Check Issuer Vat" attrs="{'invisible': [('payment_method_code', '!=', 'new_third_party_checks')]}"/>
+                <label for="l10n_latam_check_current_journal_id" string="Check Current Journal" attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('payment_method_code', '!=', 'new_third_party_checks')]}"/>
+                <div class="oe_inline" attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('payment_method_code', '!=', 'new_third_party_checks')]}">
+                    <field name="l10n_latam_check_current_journal_id"/>
+                    <span attrs="{'invisible': [('l10n_latam_check_current_journal_id', '!=', False)]}">Not in Wallet</span>
+                    <button name="button_open_check_operations" type="object" string="⇒ Check Operations" class="oe_link"/>
+                </div>
+                    <field name="check_manual_sequencing" invisible="1"/>
+                    <field name="show_check_number" invisible="1"/>
+                    <field name="check_number" attrs="{'invisible': [('show_check_number', '=', False)]}" invisible="0"/>
+					<field name="display_check_number" invisible="1"/>
+                <field name="payment_method_code" invisible="1"/>
+                <field name="suitable_payment_token_ids" invisible="1"/>
+                <field name="use_electronic_payment_method" invisible="1"/>
+                <field name="payment_token_id" options="{'no_create': True}" attrs="{'invisible': [('use_electronic_payment_method', '!=', True)], 'readonly': [('state', '!=', 'draft')]}"/>
+
+                                <field name="partner_bank_id" string="Customer Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" attrs="{                                             'invisible': ['|', '|', '|', ('show_partner_bank_account', '=', False), ('partner_type','!=','customer'), ('is_internal_transfer', '=', True), ('payment_type', '=', 'inbound')],                                             'required': [('require_partner_bank_account', '=', True), ('is_internal_transfer', '=', False)],                                         }"/>
+
+                                <field name="partner_bank_id" string="Vendor Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" attrs="{                                             'invisible': ['|', '|', '|', ('show_partner_bank_account', '=', False), ('partner_type','!=','supplier'), ('is_internal_transfer', '=', True), ('payment_type', '=', 'inbound')],                                             'required': [('require_partner_bank_account', '=', True), ('is_internal_transfer', '=', False)],                                         }"/>
+
+                                <!-- This field should always be readonly but using readonly="1" overrides the other partner_bank_id
+                                fields readonly condition in the framework, preventing the modification of these fields -->
+                                <field name="partner_bank_id" string="Company Bank Account" context="{'default_partner_id': partner_id, 'default_allow_out_payment': True}" attrs="{                                             'invisible': ['|', '|', ('show_partner_bank_account', '=', False), ('is_internal_transfer', '=', True), ('payment_type', '=', 'outbound')],                                             'required': [('require_partner_bank_account', '=', True), ('is_internal_transfer', '=', False)],                                         }"/>
+
+                                <field name="destination_journal_id" context="{'default_partner_id': partner_id}" attrs="{'invisible': [('is_internal_transfer', '=', False)],                                        'readonly': [('state', '!=', 'draft')], 'required': [('is_internal_transfer', '=', True),('state', '=', 'draft')]}"/>
+                <div colspan="2" attrs="{'invisible': [('payment_method_code', '!=', 'withholding')]}">
+                    <group name="withholding_data">
+                        <field name="tax_withholding_id" options="{'no_create': True, 'no_open': True}" domain="[('type_tax_use', '=', partner_type), ('company_id', '=', company_id)]" attrs="{'required': [('payment_method_code', '=', 'withholding')]}"/>
+                        <field name="withholding_number"/>
+                        <field name="withholding_base_amount" attrs="{'required': [('payment_method_code', '=', 'withholding')]}"/>
+                        <field name="withholdable_invoiced_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="withholdable_advanced_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="accumulated_amount" attrs="{'invisible': [('withholding_accumulated_payments', '=', False)]}"/>
+                        <field name="total_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="withholding_non_taxable_minimum" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="withholding_non_taxable_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="withholdable_base_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                        <field name="period_withholding_amount" attrs="{'invisible': [('withholding_accumulated_payments', '=', False)]}"/>
+                        <field name="previous_withholding_amount" attrs="{'invisible': [('withholding_accumulated_payments', '=', False)]}"/>
+                        <field name="computed_withholding_amount" attrs="{'invisible': [('automatic', '=', False)]}"/>
+                    </group>
+                </div>
+                <!-- Move Third party checks -->
+                <field name="l10n_ar_partner_vat" attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('l10n_ar_partner_vat', '=', False), '&amp;', ('payment_method_code', 'not in', ['out_third_party_checks', 'new_third_party_checks', 'check_printing']), ('show_partner_bank_account', '=', False)]}"/>
+                <field name="l10n_latam_check_id" attrs="{                         'invisible': [('payment_method_code', 'not in', ['in_third_party_checks', 'out_third_party_checks']), ('l10n_latam_check_id', '=', False)],                         'required': [('payment_method_code', 'in', ['in_third_party_checks', 'out_third_party_checks'])]}" domain="[('operation', '=', 'handed'), ('endosable', '=', 'False')]" context="{'search_view_ref': 'l10n_latam_check.view_account_payment_third_party_checks_search'}" options="{'no_create': True}"/>
+                <field name="source_payment_id" attrs="{'invisible': [('source_payment_id', '=', False)]}"/>
+                <field name="payment_transaction_id" groups="base.group_no_one" attrs="{'invisible': [('use_electronic_payment_method', '!=', True)]}"/>
+                            </group>
+                    <group groups="base.group_no_one">
+                        <field name="edi_document_ids" string="EDI Documents" groups="base.group_no_one" options="{'no_open': '1'}" attrs="{'invisible': [('edi_document_ids', '=', [])]}">
+                            <tree create="false" delete="false" edit="false" decoration-danger="error">
+                                <field name="name"/>
+                                <field name="edi_format_name"/>
+                                <field name="state"/>
+                                <field name="error" invisible="1"/>
+                                <field name="blocking_level" invisible="1"/>
+                                <button name="action_export_xml" type="object" class="oe_link oe_inline" string="Download" groups="base.group_no_one" attrs="{'invisible': ['|', ('error', '=', False), ('blocking_level', '=', 'info')]}"/>
+                            </tree>
+                        </field>
+                    </group>
+                            <group>
+                                <field name="qr_code" invisible="1"/>
+                                <div attrs="{'invisible': [('qr_code', '=', False)]}" colspan="2" class="text-center">
+                                    <field name="qr_code" widget="html"/>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                    <field name="automatic" invisible="1"/>
+                    <field name="withholding_accumulated_payments" invisible="1"/>
+                <field name="payment_group_id" invisible="1"/>
+                </form>
+  </xpath>
+</data>
